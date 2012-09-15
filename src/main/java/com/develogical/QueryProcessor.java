@@ -35,6 +35,17 @@ public class QueryProcessor {
         if (query.contains("Fibonacci")) {
         	return fibonacci(sub);
         }
+        if (query.contains("Prime Minister of Great Britain")) {
+        	return "David Cameron";
+        }
+        if (query.contains("Eiffel")) {
+        	return "Paris";
+        }
+        
+        if (query.contains("what colour is a banana")) {
+        	return "yellow";
+        }
+        
         return "";
     }
     

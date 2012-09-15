@@ -49,6 +49,13 @@ public class QueryProcessorTest {
         assertThat(queryProcessor.process("76EDA090: what is the 7th number in the Fibonacci sequence"), containsString("13"));
     }
     
+    @Test
+    public void knowsAboutPrimes() throws Exception {
+    	//System.out.print(queryProcessor.process("what is 10 plus 30"));
+        assertThat(queryProcessor.process("5da97390: which of the following numbers are primes: 61, 419, 71, 103"), containsString("61,419,71,103"));
+    }
+    
+    
     
     
 }
