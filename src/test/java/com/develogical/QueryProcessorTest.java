@@ -1,6 +1,7 @@
 package com.develogical;
 
 import org.junit.Test;
+import org.omg.PortableInterceptor.SYSTEM_EXCEPTION;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
@@ -19,4 +20,11 @@ public class QueryProcessorTest {
     public void knowsAboutSpa() throws Exception {
         assertThat(queryProcessor.process("SPA2012"), containsString("conference"));
     }
+
+    @Test
+    public void knowsAboutWhatIs() throws Exception {
+    	//System.out.print(queryProcessor.process("what is 10 plus 30"));
+        assertThat(queryProcessor.process("what is 10 plus 30"), containsString("40"));
+    }
+
 }

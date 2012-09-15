@@ -1,5 +1,7 @@
 package com.develogical;
 
+import java.util.regex.*;
+
 public class QueryProcessor {
 
     public String process(String query) {
@@ -11,12 +13,23 @@ public class QueryProcessor {
         	return "I'm just a drop flop:" + query;
         }
         if (query.contains("what is")) {
-        	final String REGEXP= "([^\\d]+)([\\d]+)([^\\d]+)([\\d]+)";
-
-        	String[] r = query.split(REGEXP);
-
-        	double sum = new Double(r[1]).doubleValue() + new Double(r[3]).doubleValue();
-            return new Double(sum).toString();
+        	return whatIs(query);
+        }
+        if (query.contains("what is")) {
+        	return whatIs(query);
+        }
+        return "";
+    }
+    
+    /* What Is */
+    public String whatIs(String query) {
+    	final String REGEXP= "([^\\d]+)([\\d]+)([^\\d]+)([\\d]+)";
+    	Pattern pattern= Pattern.compile(REGEXP);
+        Matcher matcher = pattern.matcher(query);
+        
+        if (matcher.matches()){
+        	double sum = new Double(matcher.group(2)).doubleValue() + new Double(matcher.group(4)).doubleValue(); 
+        	return new Double(sum).toString();
         }
         return "";
     }
