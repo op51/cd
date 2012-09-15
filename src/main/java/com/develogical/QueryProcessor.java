@@ -7,8 +7,8 @@ public class QueryProcessor {
             return "SPA is a conference";
         }
         if (query.contains("Dragos") || query.contains("Ovidiu")) {
-        	return "Drop flop";
+        	return "Drop flop:" + query;
         }
-        return "";
+        return "I don't know this one, I'm just a drop flop!";
     }
 }
