@@ -32,6 +32,9 @@ public class QueryProcessor {
         if (query.contains("which of the following numbers is the largest")) {
         	return largestAll(sub);
         }
+        if (query.contains("Fibonacci")) {
+        	return fibonacci(sub);
+        }
         return "";
     }
     
@@ -79,4 +82,23 @@ public class QueryProcessor {
     }
     
     
+    /* What Is MINUS*/
+    public String fibonacci(String query) {
+    	
+    	final String REGEXP= "([\\d]+)";
+    	Pattern pattern= Pattern.compile(REGEXP);
+        Matcher matcher = pattern.matcher(query);
+        
+        String r = "";
+        
+        if (matcher.find()){
+        	r = new Integer(fib(new Integer(matcher.group()).intValue())).toString();
+        }
+        
+        return r;
+    }
+    private static int fib(int n) {
+    	 if (n <= 1) return n;
+    	 else return fib(n-1) + fib(n-2);
+    }
 }

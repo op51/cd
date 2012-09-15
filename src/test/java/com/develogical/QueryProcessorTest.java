@@ -42,4 +42,13 @@ public class QueryProcessorTest {
     	//System.out.print(queryProcessor.process("what is 10 plus 30"));
         assertThat(queryProcessor.process("76EDA090: which of the following numbers is the largest: 12, 186"), containsString("186"));
     }
+    
+    @Test
+    public void knowsAboutFibonacci() throws Exception {
+    	//System.out.print(queryProcessor.process("what is 10 plus 30"));
+        assertThat(queryProcessor.process("76EDA090: what is the 7th number in the Fibonacci sequence"), containsString("13"));
+    }
+    
+    
+    
 }
