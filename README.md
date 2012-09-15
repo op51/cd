@@ -1,4 +1,2 @@
 cd
-==
-
 Continuous Delivery workshop
