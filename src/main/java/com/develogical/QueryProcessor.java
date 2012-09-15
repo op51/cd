@@ -11,23 +11,32 @@ public class QueryProcessor {
     	System.out.println(query);
     	System.out.println("###| -------- |###");
     	
+    	String sub=query;
+    	
+    	if (query.length()>9) {
+    		sub=query.substring(9);
+    	}
+    	
         if (query.contains("SPA2012")) {
             return "SPA is a conference";
         }
         if (query.contains("Dragos") || query.contains("Ovidiu")) {
         	return "I'm just a drop flop:" + query;
         }
-        if (query.contains("what is")) {
-        	return whatIs(query);
+        if (query.contains("plus")) {
+        	return whatIsPlus(sub);
+        }
+        if (query.contains("minus")) {
+        	return whatIsMinus(sub);
         }
         if (query.contains("which of the following numbers is the largest")) {
-        	return largestAll(query);
+        	return largestAll(sub);
         }
         return "";
     }
     
-    /* What Is */
-    public String whatIs(String query) {
+    /* What Is PLUS*/
+    public String whatIsPlus(String query) {
     	final String REGEXP= "([^\\d]+)([\\d]+)([^\\d]+)([\\d]+)";
     	Pattern pattern= Pattern.compile(REGEXP);
         Matcher matcher = pattern.matcher(query);
@@ -38,6 +47,18 @@ public class QueryProcessor {
         }
         return "";
     }
+    /* What Is MINUS*/
+    public String whatIsMinus(String query) {
+    	final String REGEXP= "([^\\d]+)([\\d]+)([^\\d]+)([\\d]+)";
+    	Pattern pattern= Pattern.compile(REGEXP);
+        Matcher matcher = pattern.matcher(query);
+        
+        if (matcher.matches()){
+        	double diff= new Double(matcher.group(2)).doubleValue() - new Double(matcher.group(4)).doubleValue(); 
+        	return new Double(diff).toString();
+        }
+        return "";
+    }
     /* Largest */
    
     
@@ -45,6 +66,7 @@ public class QueryProcessor {
     	final String REGEXP= "([\\d]+)";
     	Pattern pattern= Pattern.compile(REGEXP);
         Matcher matcher = pattern.matcher(query);
+        
         
         double max =Double.MIN_VALUE;
         while (matcher.find()){
