@@ -17,7 +17,7 @@ public class QueryProcessor {
         	return whatIs(query);
         }
         if (query.contains("which of the following numbers is the largest")) {
-        	return largest(query);
+        	return largestAll(query);
         }
         return "";
     }
@@ -53,6 +53,20 @@ public class QueryProcessor {
         return "";
     }
     
+    public String largestAll(String query) {
+    	final String REGEXP= "([\\d]+)";
+    	Pattern pattern= Pattern.compile(REGEXP);
+        Matcher matcher = pattern.matcher(query);
+        
+        double max =Double.MIN_VALUE;
+        while (matcher.find()){
+        	double value = new Double(matcher.group()).doubleValue();
+        	if (value>max) {
+        		max=value;
+        	}
+        }
+    	return new Double(max).toString();
+    }
     
 
     public String maxValue(double[] list) {

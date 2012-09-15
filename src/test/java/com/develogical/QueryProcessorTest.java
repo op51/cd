@@ -28,8 +28,13 @@ public class QueryProcessorTest {
     }
 
     @Test
-    public void knowsAboutLargest() throws Exception {
+    public void knowsAboutLargest4() throws Exception {
     	//System.out.print(queryProcessor.process("what is 10 plus 30"));
         assertThat(queryProcessor.process("which of the following numbers is the largest: 940, 186, 14, 69"), containsString("940"));
+    }
+    @Test
+    public void knowsAboutLargest2() throws Exception {
+    	//System.out.print(queryProcessor.process("what is 10 plus 30"));
+        assertThat(queryProcessor.process("which of the following numbers is the largest: 12, 186"), containsString("186"));
     }
 }
