@@ -37,22 +37,6 @@ public class QueryProcessor {
     /* Largest */
    
     
-    public String largest(String query) {
-    	final String REGEXP= "([^\\d]+)([\\d]+),\\s([\\d]+),\\s([\\d]+),\\s([\\d]+)";
-    	Pattern pattern= Pattern.compile(REGEXP);
-        Matcher matcher = pattern.matcher(query);
-        
-        if (matcher.matches()){
-        	double one = new Double(matcher.group(2)).doubleValue();
-            double two= new Double(matcher.group(3)).doubleValue(); 
-        	double three= new Double(matcher.group(4)).doubleValue(); 
-        	double four= new Double(matcher.group(5)).doubleValue();
-        	double[] list = {one, two, three, four};
-        	return maxValue(list);
-        }
-        return "";
-    }
-    
     public String largestAll(String query) {
     	final String REGEXP= "([\\d]+)";
     	Pattern pattern= Pattern.compile(REGEXP);
@@ -65,17 +49,6 @@ public class QueryProcessor {
         		max=value;
         	}
         }
-    	return new Double(max).toString();
-    }
-    
-
-    public String maxValue(double[] list) {
-    	double max=Double.MIN_VALUE;
-    	for(int i=0;i<list.length;i++){
-    		if (list[i]>max) {
-    			max=list[i];
-    		}
-    	}
     	return new Double(max).toString();
     }
     
